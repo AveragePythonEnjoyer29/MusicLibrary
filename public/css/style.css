@@ -1,0 +1,71 @@
+*,
+*::before,
+*::after {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+    scroll-behavior: smooth;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+a {
+    text-decoration: none;
+    color: #000000;
+}
+
+li {
+    list-style: none;
+}
+
+body {
+    background: #11111b;
+    font-family: sans-serif;
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 5rem;
+    height: 100vh;
+    width: 100vw;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+}
+
+.container__blocks {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.container__blocks > div {
+    background: #1e1e2e;
+    color: #cdd6f4;
+    border-radius: 0.7rem;
+    padding: 2rem;
+    height: 20rem;
+    width: 20rem;
+}
+
+
+.single__img {
+    width: 10rem;
+    height: 10rem;
+}
+
+.single__img > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    bottom: 0px;
+}

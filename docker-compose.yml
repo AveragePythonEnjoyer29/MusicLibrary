@@ -1,0 +1,45 @@
+version: '3.5'
+
+# Services
+services:
+
+  # PHP FPM Service
+  php:
+    container_name: php2 # fix for containers already being in use (even tho no containers are running)
+    build:
+      dockerfile: ./docker/php/dockerfile
+      context: .
+    volumes:
+      - './:/var/www/html'
+    depends_on:
+      - mariadb
+
+  # Nginx Service
+  nginx:
+    container_name: web2 # see line 8
+    image: nginx:latest
+    ports:
+      - 8080:80
+    links:
+      - 'php'
+    volumes:
+      - './:/var/www/html'
+      - './docker/nginx:/etc/nginx/conf.d'
+    depends_on:
+      - php
+
+  # MariaDB Service
+  mariadb:
+    container_name: db2 # see line 8
+    image: mariadb:latest
+    environment:
+      MYSQL_DATABASE: voorbeeld_db
+      MYSQL_USER: db_user
+      MYSQL_PASSWORD: nJ)}(W*Wr;sy%s,JD&#ugv<dyZE:Wc
+      MYSQL_ROOT_PASSWORD: dh$hV4&D1(GwLp/<,piX.K\fH#j$AZ
+    volumes:
+      - './docker/mysqldata:/var/lib/mysql'
+
+# Volumes
+volumes:
+  mysqldata:
